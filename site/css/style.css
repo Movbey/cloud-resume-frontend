@@ -1,0 +1,161 @@
+/* === Reset & Base === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #e2e8f0;
+  color: #334155;
+  line-height: 1.6;
+  padding: 2rem 1rem;
+}
+
+a { color: #2563eb; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #38bdf8; }
+
+/* === Container === */
+.resume-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  overflow: hidden;
+}
+
+/* === Header === */
+.header {
+  background: #1e293b;
+  color: #fff;
+  padding: 2.5rem 2rem 2rem;
+  text-align: center;
+  border-bottom: 4px solid #2563eb;
+}
+
+.header h1 { font-size: 2.2rem; font-weight: 700; letter-spacing: -0.5px; }
+.tagline { color: #38bdf8; font-size: 1.1rem; font-weight: 500; margin-top: 0.25rem; }
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  font-size: 0.85rem;
+}
+
+.contact-info a, .contact-info span { color: #cbd5e1; transition: color 0.2s; }
+.contact-info a:hover { color: #38bdf8; }
+.contact-info i { margin-right: 0.3rem; }
+
+/* === Two-Column Layout === */
+.content { display: flex; }
+
+.sidebar {
+  width: 30%;
+  background: #f1f5f9;
+  padding: 1.5rem;
+  border-right: 1px solid #e2e8f0;
+}
+
+.main { width: 70%; padding: 1.5rem 2rem; }
+
+/* === Section Headings === */
+h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+  border-bottom: 2px solid #2563eb;
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+h2 i { color: #2563eb; margin-right: 0.4rem; }
+
+h3 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #64748b;
+  margin: 0.8rem 0 0.4rem;
+}
+
+/* === Skill Tags === */
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+.tag {
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* === Sidebar Sections === */
+.sidebar section { margin-bottom: 1.5rem; }
+
+.certifications ul { list-style: none; font-size: 0.85rem; }
+.certifications li { padding: 0.25rem 0; border-bottom: 1px solid #e2e8f0; }
+.certifications li:last-child { border-bottom: none; }
+.certifications .in-progress { color: #94a3b8; font-style: italic; }
+
+.edu-item { font-size: 0.85rem; }
+.edu-item p { color: #64748b; margin: 0.1rem 0; }
+
+.date { font-size: 0.78rem; color: #94a3b8; font-weight: 500; }
+
+/* === Experience === */
+.job {
+  margin-bottom: 1.2rem;
+  padding-left: 0.8rem;
+  border-left: 3px solid #2563eb;
+}
+
+.job-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.job-header.sub { margin-top: 0.6rem; }
+
+.job-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2563eb;
+  margin: 0.15rem 0 0.4rem;
+}
+
+.job ul { font-size: 0.85rem; padding-left: 1.2rem; }
+.job li { margin-bottom: 0.3rem; }
+
+/* === Projects === */
+.projects .job a { font-weight: 500; }
+
+/* === Summary === */
+.summary { margin-bottom: 1.5rem; }
+.summary p { font-size: 0.9rem; }
+
+/* === Footer === */
+.footer {
+  background: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 1rem 2rem;
+  font-size: 0.8rem;
+}
+
+.footer a { color: #38bdf8; }
+.visitor-count { font-size: 0.85rem; color: #cbd5e1; margin-bottom: 0.3rem; }
+.visitor-count i { margin-right: 0.3rem; }
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .content { flex-direction: column; }
+  .sidebar, .main { width: 100%; }
+  .sidebar { border-right: none; border-bottom: 1px solid #e2e8f0; }
+  .header h1 { font-size: 1.8rem; }
+  .contact-info { font-size: 0.78rem; gap: 0.6rem; }
+}
