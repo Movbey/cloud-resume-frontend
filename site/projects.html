@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Michael Ovbey</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">MO</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html" class="active">Projects</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <h1><i class="fas fa-rocket"></i> Projects</h1>
+    <p>Hands-on cloud engineering</p>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+
+      <!-- ==================== CLOUD RESUME CHALLENGE ==================== -->
+      <div class="project-feature">
+        <div class="project-feature-header">
+          <h2>Cloud Resume Challenge</h2>
+          <div class="project-tech">
+            <span>AWS</span><span>Terraform</span><span>Python</span><span>JavaScript</span><span>GitHub Actions</span>
+          </div>
+        </div>
+
+        <p class="project-desc">A full-stack serverless resume website built entirely on AWS, demonstrating cloud engineering skills from infrastructure to CI/CD.</p>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <i class="fas fa-globe"></i>
+            <strong>Frontend</strong>
+            <p>HTML/CSS/JS hosted on S3, served via CloudFront CDN with HTTPS and custom domain through Route 53</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-server"></i>
+            <strong>Backend</strong>
+            <p>API Gateway HTTP API triggers a Python Lambda function that atomically increments a DynamoDB visitor counter</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-cube"></i>
+            <strong>Infrastructure</strong>
+            <p>All resources defined in Terraform with modular design, remote state in S3 with DynamoDB locking</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-arrows-spin"></i>
+            <strong>CI/CD</strong>
+            <p>Two GitHub Actions pipelines using OIDC — backend runs tests then terraform apply, frontend syncs to S3 and invalidates cache</p>
+          </div>
+        </div>
+
+        <details class="project-details">
+          <summary>Architecture Deep Dive</summary>
+          <div class="project-details-body">
+
+            <div class="arch-diagram">
+              <img src="assets/cloud-resume-architecture.png" alt="Cloud Resume Challenge Architecture Diagram" style="width:100%; border-radius:8px;">
+            </div>
+
+            <h3>How the Frontend Works</h3>
+            <p>The website files are stored in a private S3 bucket — no public access. CloudFront is the only thing that can read from it using Origin Access Control (OAC). This means all traffic goes through the CDN, which caches content at edge locations worldwide for fast delivery. An ACM certificate provides HTTPS, and Route 53 points the custom domain to the CloudFront distribution via an A record alias.</p>
+
+            <h3>How the Visitor Counter Works</h3>
+            <p>When someone loads the page, a small JavaScript file makes a GET request to an API Gateway HTTP API endpoint. API Gateway forwards the request to a Python Lambda function, which uses boto3 to call DynamoDB's UpdateItem with an atomic counter — incrementing the count by 1 and returning the new value in a single operation. The count is sent back as JSON and displayed in the footer. Session storage prevents double-counting on page navigation.</p>
+
+            <h3>How Infrastructure is Managed</h3>
+            <ul>
+              <li>All resources defined in <strong>Terraform</strong> — S3, CloudFront, Route 53, ACM, API Gateway, Lambda, DynamoDB, and IAM roles</li>
+              <li>Split into two modules: <strong>frontend</strong> (S3 + CloudFront + DNS) and <strong>backend</strong> (API + Lambda + DB)</li>
+              <li>State stored remotely in S3 with DynamoDB locking to prevent concurrent modifications</li>
+              <li>Bootstrap Terraform config creates the state backend and GitHub OIDC provider</li>
+            </ul>
+
+            <h3>CI/CD Pipeline</h3>
+            <ul>
+              <li><strong>Backend pipeline:</strong> Checks out code → authenticates via OIDC (no stored credentials) → runs pytest → terraform plan → terraform apply</li>
+              <li><strong>Frontend pipeline:</strong> Checks out code → authenticates via OIDC → syncs files to S3 → invalidates CloudFront cache</li>
+              <li>OIDC federation means GitHub sends a short-lived token to AWS, which issues temporary credentials — no long-lived secrets anywhere</li>
+            </ul>
+
+            <h3>AWS Services Used</h3>
+            <p>S3, CloudFront, Route 53, ACM, API Gateway, Lambda, DynamoDB, IAM, CloudWatch — 9 services total. Monthly cost: ~$0.50/month (Route 53 hosted zone) plus ~$13/year for domain registration.</p>
+          </div>
+        </details>
+
+        <div class="project-links">
+          <a href="https://github.com/Movbey/cloud-resume-backend" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> Backend Repo</a>
+          <a href="https://github.com/Movbey/cloud-resume-frontend" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> Frontend Repo</a>
+          <a href="https://dev.to/michael_ovbey/how-i-built-a-serverless-resume-website-on-aws-as-a-complete-beginner-427l" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-pen"></i> Blog Post</a>
+        </div>
+      </div>
+
+      <!-- ==================== AWS COST OPTIMIZER ==================== -->
+      <div class="project-feature" style="margin-top: 1.5rem;">
+        <div class="project-feature-header">
+          <h2>AWS Cost Optimizer</h2>
+          <div class="project-tech">
+            <span>AWS CDK</span><span>TypeScript</span><span>Python</span><span>Lambda</span><span>Cost Explorer</span><span>GitHub Actions</span>
+          </div>
+        </div>
+
+        <p class="project-desc">A serverless FinOps tool that analyzes AWS spending, detects idle resources, and emails daily cost optimization reports with actionable recommendations.</p>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <i class="fas fa-clock"></i>
+            <strong>Scheduled Pipeline</strong>
+            <p>EventBridge triggers a Lambda daily at 8 AM ET to pull Cost Explorer data — 7-day breakdown, month-over-month trends, and month-end forecast</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-magnifying-glass-dollar"></i>
+            <strong>Waste Detection</strong>
+            <p>Scans for unattached EBS volumes, unused Elastic IPs, old snapshots, and idle EC2/RDS instances via CloudWatch metrics</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-triangle-exclamation"></i>
+            <strong>Anomaly Detection</strong>
+            <p>Flags day-over-day cost spikes (&gt;50%) and month-over-month growth (&gt;20%) with configurable thresholds</p>
+          </div>
+          <div class="arch-card">
+            <i class="fas fa-cube"></i>
+            <strong>CDK Infrastructure</strong>
+            <p>Entire stack defined in AWS CDK (TypeScript) — Lambda, DynamoDB, SNS, EventBridge, IAM — deployed via GitHub Actions with OIDC</p>
+          </div>
+        </div>
+
+        <details class="project-details">
+          <summary>Architecture Deep Dive</summary>
+          <div class="project-details-body">
+
+            <div class="arch-diagram">
+              <img src="assets/cost-optimizer-architecture.png" alt="AWS Cost Optimizer Architecture Diagram" style="width:100%; border-radius:8px;">
+            </div>
+
+            <h3>How the Pipeline Works</h3>
+            <p>Every morning at 8 AM ET, an EventBridge scheduled rule triggers the Lambda function. The function makes 3 Cost Explorer API calls ($0.03 total) to get a 7-day cost breakdown by service, a month-over-month comparison, and a month-end forecast. It then scans for idle resources using EC2, RDS, and CloudWatch describe/metrics APIs — all read-only.</p>
+
+            <h3>Waste Detection Logic</h3>
+            <ul>
+              <li><strong>Unattached EBS volumes:</strong> Filters for volumes with state "available" — these cost money but aren't attached to any instance</li>
+              <li><strong>Unused Elastic IPs:</strong> EIPs without an AssociationId cost $3.60/month each</li>
+              <li><strong>Old EBS snapshots:</strong> Snapshots older than 30 days that may have been forgotten after experiments</li>
+              <li><strong>Idle EC2 instances:</strong> Running instances with average CPU below 5% over 7 days (via CloudWatch metrics)</li>
+              <li><strong>Idle RDS instances:</strong> Database instances with 0 connections over 7 days</li>
+            </ul>
+
+            <h3>Anomaly Detection</h3>
+            <p>The detector compares today's costs against yesterday's and flags spikes over 50%. It also compares current month-to-date against last month's total and flags growth over 20%. Both thresholds are configurable at deploy time. A minimum dollar threshold ($1) prevents noise from tiny cost fluctuations.</p>
+
+            <h3>Report &amp; Delivery</h3>
+            <p>The report generator builds a plain-text email with an executive summary, top services by spend, daily cost breakdown, month-over-month comparison, waste findings with dollar estimates, and actionable recommendations. It's published to an SNS topic which delivers it via email. Cost history is stored in DynamoDB with a 90-day TTL for trend tracking.</p>
+
+            <h3>Infrastructure as Code</h3>
+            <ul>
+              <li>Entire stack defined in a single <strong>AWS CDK (TypeScript)</strong> stack — DynamoDB table, SNS topic, Lambda function, EventBridge rule, and least-privilege IAM policies</li>
+              <li>Lambda uses <strong>zero external dependencies</strong> — only boto3 (pre-installed) and Python standard library</li>
+              <li>CDK grant helpers auto-scope DynamoDB and SNS permissions to specific resource ARNs</li>
+              <li>GitHub Actions pipeline uses <strong>OIDC federation</strong> — runs CDK tests + Python tests, then deploys with <code>cdk deploy</code></li>
+            </ul>
+
+            <h3>Cost to Run</h3>
+            <p>~$0.90/month on a daily schedule (3 Cost Explorer API calls at $0.01 each × 30 days). Lambda, DynamoDB, EventBridge, SNS, and CloudWatch Logs all stay within free tier.</p>
+          </div>
+        </details>
+
+        <div class="project-links">
+          <a href="https://github.com/Movbey/aws-cost-optimizer" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="visitor-count"><i class="fas fa-eye"></i> <span id="visitor-count">...</span> visitors</p>
+      <p>Built with <i class="fab fa-aws"></i> AWS &middot; S3 &middot; CloudFront &middot; Lambda &middot; DynamoDB &middot; Terraform</p>
+    </div>
+  </footer>
+
+  <script src="js/counter.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
