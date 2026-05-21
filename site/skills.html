@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skills — Michael Ovbey</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">MO</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="skills.html" class="active">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html">Projects</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <h1><i class="fas fa-code"></i> Skills</h1>
+    <p>Technical and business capabilities</p>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+
+      <h2 class="section-title"><i class="fab fa-aws"></i> Cloud &amp; Technical</h2>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-aws"></i></div>
+          <strong>AWS</strong>
+          <p>S3, CloudFront, Lambda, DynamoDB, API Gateway, Route 53, IAM, ACM, EventBridge, SNS, Cost Explorer, CloudWatch</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-cube"></i></div>
+          <strong>Terraform</strong>
+          <p>Infrastructure as Code, modules, remote state, CI/CD integration</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fas fa-layer-group"></i></div>
+          <strong>AWS CDK</strong>
+          <p>TypeScript CDK v2, serverless stacks, event-driven architectures</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-python"></i></div>
+          <strong>Python</strong>
+          <p>Lambda functions, boto3, pytest, Cost Explorer API, resource scanning, anomaly detection</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-js"></i></div>
+          <strong>JavaScript</strong>
+          <p>DOM manipulation, Fetch API, async/await, frontend logic</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-html5"></i></div>
+          <strong>HTML &amp; CSS</strong>
+          <p>Responsive design, Flexbox, Grid, modern layouts, accessibility</p>
+        </div>
+        <div class="skill-card">
+          <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
+          <strong>Git &amp; CI/CD</strong>
+          <p>GitHub, GitHub Actions, OIDC authentication, automated deployments</p>
+        </div>
+      </div>
+
+      <h2 class="section-title" style="margin-top:2.5rem"><i class="fas fa-handshake"></i> Sales &amp; Business</h2>
+      <div class="skill-grid">
+        <div class="skill-card dark">
+          <div class="skill-icon"><i class="fas fa-bullseye"></i></div>
+          <strong>Sales Prospecting</strong>
+          <p>Lead generation, cold outreach, email sequences, pipeline management</p>
+        </div>
+        <div class="skill-card dark">
+          <div class="skill-icon"><i class="fas fa-users"></i></div>
+          <strong>Team Leadership</strong>
+          <p>Coaching, mentoring, shift management, performance improvement</p>
+        </div>
+        <div class="skill-card dark">
+          <div class="skill-icon"><i class="fas fa-heart"></i></div>
+          <strong>Customer Satisfaction</strong>
+          <p>Face-to-face service, issue resolution, relationship building</p>
+        </div>
+        <div class="skill-card dark">
+          <div class="skill-icon"><i class="fas fa-clock"></i></div>
+          <strong>Time Management</strong>
+          <p>Multitasking, deadline management, process optimization</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="visitor-count"><i class="fas fa-eye"></i> <span id="visitor-count">...</span> visitors</p>
+      <p>Built with <i class="fab fa-aws"></i> AWS &middot; S3 &middot; CloudFront &middot; Lambda &middot; DynamoDB &middot; Terraform</p>
+    </div>
+  </footer>
+
+  <script src="js/counter.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>

@@ -3,186 +3,119 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Michael Ovbey — Cloud &amp; Sales Professional</title>
+  <title>Michael Ovbey III — Cloud &amp; Sales Professional</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-  <div class="resume-container">
 
-    <!-- HEADER -->
-    <header class="header">
-      <h1>Michael Ovbey</h1>
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">MO</a>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="skills.html">Skills</a>
+        <a href="experience.html">Experience</a>
+        <a href="certifications.html">Certifications</a>
+        <a href="projects.html">Projects</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <img src="assets/headshot.jpg" alt="Michael Ovbey III" class="avatar">
+      <h1>Michael Ovbey III</h1>
       <p class="tagline">Cloud &amp; Sales Professional</p>
-      <div class="contact-info">
+      <div class="contact-row">
         <a href="mailto:michaelovbey@gmail.com"><i class="fas fa-envelope"></i> michaelovbey@gmail.com</a>
         <a href="tel:770-547-9639"><i class="fas fa-phone"></i> 770-547-9639</a>
-        <span><i class="fas fa-location-dot"></i> Atlanta, Georgia</span>
+        <span><i class="fas fa-location-dot"></i> Atlanta, GA</span>
         <a href="https://linkedin.com/in/michael-ovbey-iii-3877241b3" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
         <a href="https://github.com/Movbey" target="_blank" rel="noopener"><i class="fab fa-github"></i> GitHub</a>
       </div>
-    </header>
-
-    <!-- MAIN CONTENT -->
-    <div class="content">
-
-      <!-- SIDEBAR -->
-      <aside class="sidebar">
-
-        <section class="skills">
-          <h2><i class="fas fa-code"></i> Skills</h2>
-          <h3>Cloud &amp; Technical</h3>
-          <div class="skill-tags">
-            <span class="tag">AWS</span>
-            <span class="tag">S3</span>
-            <span class="tag">CloudFront</span>
-            <span class="tag">Lambda</span>
-            <span class="tag">DynamoDB</span>
-            <span class="tag">API Gateway</span>
-            <span class="tag">Route 53</span>
-            <span class="tag">IAM</span>
-            <span class="tag">Terraform</span>
-            <span class="tag">Python</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">HTML/CSS</span>
-            <span class="tag">Git</span>
-            <span class="tag">GitHub Actions</span>
-          </div>
-          <h3>Sales &amp; Business</h3>
-          <div class="skill-tags">
-            <span class="tag">Sales Prospecting</span>
-            <span class="tag">Lead Generation</span>
-            <span class="tag">Cold Outreach</span>
-            <span class="tag">Customer Satisfaction</span>
-            <span class="tag">Team Leadership</span>
-            <span class="tag">Time Management</span>
-            <span class="tag">Process Optimization</span>
-          </div>
-        </section>
-
-        <section class="certifications">
-          <h2><i class="fas fa-certificate"></i> Certifications</h2>
-          <ul>
-            <li>HubSpot Sales Software Certified</li>
-            <li>Inbound Sales Certified — HubSpot</li>
-            <li>Inbound Certified — HubSpot</li>
-            <li class="in-progress">AWS Cloud Practitioner <em>(in progress)</em></li>
-          </ul>
-        </section>
-
-        <section class="education">
-          <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-          <div class="edu-item">
-            <strong>Praxis</strong> — Online
-            <p>Sales &amp; Content Marketing</p>
-            <span class="date">09/2024 – Present</span>
-          </div>
-        </section>
-
-      </aside>
-
-      <!-- MAIN -->
-      <main class="main">
-
-        <section class="summary">
-          <h2><i class="fas fa-user"></i> About Me</h2>
-          <p>Results-driven professional with a background in sales, leadership, and customer service — now building in the cloud. Hands-on experience deploying serverless applications on AWS using Terraform, Python, and CI/CD pipelines. HubSpot certified in inbound sales. Combines a people-first mindset with technical skills to solve problems and deliver results.</p>
-        </section>
-
-        <section class="experience">
-          <h2><i class="fas fa-briefcase"></i> Experience</h2>
-
-          <div class="job">
-            <div class="job-header">
-              <strong>Walmart</strong> — Woodstock, GA
-              <span class="date">03/2024 – Present</span>
-            </div>
-            <p class="job-title">In Home Delivery Associate</p>
-            <ul>
-              <li>Trusted to independently manage a high volume of daily deliveries, meeting tight deadlines and maintaining a high on-time delivery rate</li>
-              <li>Enhanced Walmart's reputation by providing exceptional, face-to-face service during deliveries and quickly resolving issues on-site</li>
-              <li>Adapted to shifting operational needs, handling delivery challenges and multitasking during staffing shortages</li>
-              <li>Earned a promotion to In-Home Delivery Driver within 8 months due to performance excellence and strong customer satisfaction</li>
-            </ul>
-            <div class="job-header sub">
-              <span class="date">07/2023 – 03/2024</span>
-            </div>
-            <p class="job-title">OGP Associate</p>
-            <ul>
-              <li>Successfully supported daily order fulfillment and customer service, leading to consistent recognition for accuracy and reliability</li>
-              <li>Collaborated with team members to improve order processing efficiency, reducing delays and enhancing the overall shopping experience</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <strong>QuikTrip</strong> — Acworth, GA
-              <span class="date">06/2022 – 06/2023</span>
-            </div>
-            <p class="job-title">Assistant Manager</p>
-            <ul>
-              <li>Managed overnight store operations, balancing tasks like inventory tracking, cash audits, and food preparation</li>
-              <li>Coached and mentored team members during night shifts, helping them become more efficient and confident</li>
-              <li>Responded to customer issues calmly and effectively, resolving concerns that encouraged repeat business</li>
-              <li>Monitored for theft and shrinkage, successfully reducing incidents by implementing better oversight and security practices</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <strong>Ray's at Killer Creek</strong> — Roswell, GA
-              <span class="date">08/2020 – 01/2021</span>
-            </div>
-            <p class="job-title">Server Assistant</p>
-            <ul>
-              <li>Provided top-notch customer service to guests, ensuring a positive dining experience</li>
-              <li>Managed the delivery of food to the tables for the entire restaurant</li>
-              <li>Simultaneously worked with the servers and the kitchen to ensure order accuracy</li>
-            </ul>
-          </div>
-
-          <div class="job">
-            <div class="job-header">
-              <strong>Chick-fil-A</strong> — Milton, GA
-              <span class="date">06/2017 – 09/2019</span>
-            </div>
-            <p class="job-title">Team Member</p>
-            <ul>
-              <li>Greeted customers warmly, creating a friendly and welcoming environment while ensuring orders were taken efficiently</li>
-              <li>Collaborated with the drive-thru and front-of-house teams to keep wait times short and orders accurate</li>
-              <li>Maintained the cleanliness of the dining room and kitchen, ensuring health and safety standards</li>
-            </ul>
-          </div>
-        </section>
-
-        <section class="projects">
-          <h2><i class="fas fa-rocket"></i> Projects</h2>
-          <div class="job">
-            <div class="job-header">
-              <strong>Cloud Resume Challenge</strong>
-            </div>
-            <ul>
-              <li>Built a serverless resume website on AWS using S3, CloudFront, Route 53, API Gateway, Lambda, and DynamoDB</li>
-              <li>Defined all infrastructure as code with Terraform, deployed via GitHub Actions CI/CD pipelines</li>
-              <li><a href="#" id="blog-link">Read the blog post</a></li>
-            </ul>
-          </div>
-        </section>
-
-      </main>
+      <div class="hero-cta">
+        <a href="experience.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Experience</a>
+        <a href="projects.html" class="btn btn-outline"><i class="fas fa-rocket"></i> See Projects</a>
+      </div>
     </div>
+  </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-      <p class="visitor-count"><i class="fas fa-eye"></i> Visitors: <span id="visitor-count">...</span></p>
-      <p>Built with AWS · <a href="#" id="blog-link-footer">Read the blog post</a></p>
-    </footer>
+  <!-- ABOUT -->
+  <section class="page-section">
+    <div class="container">
+      <h2 class="section-title"><i class="fas fa-user"></i> About Me</h2>
+      <div class="about-card">
+        <p>Results-driven professional with a background in sales, leadership, and customer service — now building in the cloud. Hands-on experience deploying serverless applications on AWS using Terraform, Python, and CI/CD pipelines. HubSpot certified in inbound sales. Combines a people-first mindset with technical skills to solve problems and deliver results.</p>
+      </div>
 
-  </div>
+      <div class="stats-row">
+        <div class="stat-card">
+          <i class="fab fa-aws"></i>
+          <strong>12+</strong>
+          <span>AWS Services</span>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-certificate"></i>
+          <strong>4</strong>
+          <span>Certifications</span>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-code-branch"></i>
+          <strong>Full Stack</strong>
+          <span>IaC with Terraform</span>
+        </div>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <strong>5+ Years</strong>
+          <span>Customer-Facing</span>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <h3>Explore</h3>
+        <div class="link-grid">
+          <a href="skills.html" class="link-card">
+            <i class="fas fa-code"></i>
+            <strong>Skills</strong>
+            <span>Technical &amp; business skills</span>
+          </a>
+          <a href="experience.html" class="link-card">
+            <i class="fas fa-briefcase"></i>
+            <strong>Experience</strong>
+            <span>Work history &amp; achievements</span>
+          </a>
+          <a href="certifications.html" class="link-card">
+            <i class="fas fa-award"></i>
+            <strong>Certifications</strong>
+            <span>Professional credentials</span>
+          </a>
+          <a href="projects.html" class="link-card">
+            <i class="fas fa-rocket"></i>
+            <strong>Projects</strong>
+            <span>Cloud Resume Challenge</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p class="visitor-count"><i class="fas fa-eye"></i> <span id="visitor-count">...</span> visitors</p>
+      <p>Built with <i class="fab fa-aws"></i> AWS &middot; S3 &middot; CloudFront &middot; Lambda &middot; DynamoDB &middot; Terraform</p>
+    </div>
+  </footer>
 
   <script src="js/counter.js"></script>
+  <script src="js/nav.js"></script>
 </body>
 </html>
