@@ -445,3 +445,121 @@ a:hover { color: #60a5fa; }
   height: 28px;
   filter: invert(45%) sepia(80%) saturate(500%) hue-rotate(180deg) brightness(95%);
 }
+
+/* ============================================================
+   REDESIGN COMPONENTS (three-lane positioning)
+   ============================================================ */
+
+/* Resume button in nav */
+.nav-resume {
+  color: #38bdf8 !important;
+  border: 1px solid rgba(56,189,248,0.3);
+  background: rgba(56,189,248,0.08);
+}
+.nav-resume:hover { color: #fff !important; background: rgba(56,189,248,0.18); }
+.nav-resume i { margin-right: 0.3rem; }
+
+/* Hero summary line */
+.hero-summary {
+  max-width: 640px; margin: 1rem auto 0;
+  color: #cbd5e1; font-size: 0.95rem; line-height: 1.7;
+}
+
+/* Currently Targeting band */
+.targeting-band {
+  background: #131f38;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 1.1rem 0;
+}
+.targeting-inner {
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  justify-content: center;
+}
+.targeting-label {
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1px; color: #38bdf8; white-space: nowrap;
+}
+.targeting-label i { margin-right: 0.4rem; }
+.targeting-detail {
+  display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+  font-size: 0.82rem; color: #94a3b8; justify-content: center;
+}
+.targeting-detail i { color: #3b82f6; margin-right: 0.35rem; }
+
+/* Lane intro paragraph */
+.lane-intro {
+  font-size: 0.92rem; color: #94a3b8; line-height: 1.7;
+  margin-bottom: 1.4rem; max-width: 760px;
+}
+
+/* Lane cards (Where I Can Add Value) */
+.lane-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.lane-card {
+  padding: 1.5rem; border-radius: 12px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border: 1px solid rgba(59,130,246,0.15);
+  display: flex; flex-direction: column;
+  transition: all 0.2s;
+}
+.lane-card:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.12); }
+.lane-icon {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: rgba(59,130,246,0.12); color: #38bdf8;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.25rem; margin-bottom: 0.9rem;
+}
+.lane-card h3 { font-size: 1rem; color: #fff; margin-bottom: 0.5rem; }
+.lane-card p { font-size: 0.83rem; color: #94a3b8; line-height: 1.6; flex: 1; }
+.lane-link {
+  margin-top: 0.9rem; font-size: 0.8rem; font-weight: 600; color: #38bdf8;
+  display: inline-flex; align-items: center; gap: 0.4rem;
+}
+.lane-link i { transition: transform 0.2s; }
+.lane-link:hover i { transform: translateX(3px); }
+
+/* Alternating section background */
+.page-section.alt { background: #16233d; }
+
+/* "See more" inline link under sections */
+.cert-more { margin-top: 1.2rem; font-size: 0.85rem; }
+.cert-more a { font-weight: 600; display: inline-flex; align-items: center; gap: 0.4rem; }
+.cert-more i { transition: transform 0.2s; }
+.cert-more a:hover i { transform: translateX(3px); }
+
+/* Featured project list (homepage) */
+.feature-list { display: flex; flex-direction: column; gap: 0.8rem; }
+.feature-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.3rem 1.5rem; border-radius: 12px;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  border: 1px solid rgba(59,130,246,0.15);
+  transition: all 0.2s; color: #cbd5e1;
+}
+.feature-item:hover { border-color: #3b82f6; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(59,130,246,0.12); color: #cbd5e1; }
+.feature-item-main { flex: 1; }
+.feature-item-main strong { display: block; font-size: 1rem; color: #fff; margin-bottom: 0.3rem; }
+.feature-item-main p { font-size: 0.83rem; color: #94a3b8; line-height: 1.6; margin-bottom: 0.6rem; }
+.feature-arrow { color: #3b82f6; font-size: 1rem; flex-shrink: 0; transition: transform 0.2s; }
+.feature-item:hover .feature-arrow { transform: translateX(4px); }
+
+/* Structured project blocks (Technical Projects page) */
+.project-block { margin-bottom: 1.4rem; }
+.project-block:last-of-type { margin-bottom: 0; }
+.project-block h3 {
+  font-size: 0.82rem; font-weight: 700; color: #e2e8f0;
+  text-transform: uppercase; letter-spacing: 1px;
+  margin-bottom: 0.6rem; border: none; padding: 0;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.project-block h3 i { color: #38bdf8; font-size: 0.85rem; }
+.project-block p { font-size: 0.85rem; color: #94a3b8; line-height: 1.7; }
+.project-block ul { font-size: 0.85rem; color: #94a3b8; padding-left: 1.2rem; }
+.project-block li { margin-bottom: 0.4rem; line-height: 1.6; }
+.project-block li::marker { color: #3b82f6; }
+.project-block strong { color: #cbd5e1; }
+
+@media (max-width: 768px) {
+  .lane-grid { grid-template-columns: 1fr; }
+  .targeting-inner { flex-direction: column; text-align: center; }
+  .feature-item { flex-direction: row; }
+}
