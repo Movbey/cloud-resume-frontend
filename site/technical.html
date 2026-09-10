@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Projects — Michael Ovbey III</title>
+  <meta name="description" content="Hands-on AWS cloud engineering projects: serverless architecture, Terraform IaC, Lambda, Python, CI/CD, cost optimization, and monitoring. Problem, architecture, technologies, and results for each.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Technical Projects — Michael Ovbey III">
+  <meta property="og:description" content="Hands-on AWS cloud engineering: serverless architecture, Terraform, Lambda, Python, CI/CD, and cost optimization — with problem, architecture, and results for each project.">
+  <meta property="og:image" content="https://michaelovbey.com/assets/headshot.jpg">
+  <meta property="og:url" content="https://michaelovbey.com/technical.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">MO</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="technical.html" class="active">Technical Projects</a>
+        <a href="customer-sales.html">Customer &amp; Sales</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Resume / Contact</a>
+        <a href="assets/Michael-Ovbey-Resume.pdf" class="nav-resume" download><i class="fas fa-download"></i> Resume</a>
+      </div>
+      <button class="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <section class="page-header">
+    <h1><i class="fas fa-rocket"></i> Technical Projects</h1>
+    <p>Hands-on AWS cloud engineering &mdash; problem, architecture, and results</p>
+  </section>
+
+  <section class="page-section">
+    <div class="container">
+
+      <!-- ==================== CLOUD RESUME CHALLENGE ==================== -->
+      <div class="project-feature" id="cloud-resume">
+        <div class="project-feature-header">
+          <h2>Serverless Resume Website on AWS</h2>
+          <div class="project-tech">
+            <span>AWS</span><span>S3</span><span>CloudFront</span><span>Route 53</span><span>Lambda</span><span>DynamoDB</span><span>API Gateway</span><span>IAM</span><span>Terraform</span><span>Python</span><span>CI/CD</span>
+          </div>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-circle-question"></i> The Problem</h3>
+          <p>I wanted to prove I could build and operate real cloud infrastructure end to end &mdash; not just write code, but host it securely, serve it over HTTPS on a custom domain, and automate every deployment. The goal was a live, production-grade site that doubles as evidence of hands-on AWS skills.</p>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-sitemap"></i> The Architecture</h3>
+          <p>Static frontend in a private S3 bucket, served worldwide through CloudFront with an ACM TLS certificate and a Route 53 custom domain. A visitor counter runs on API Gateway → Python Lambda → DynamoDB. All infrastructure is defined in Terraform (split into frontend and backend modules) with remote state in S3 and DynamoDB state locking.</p>
+          <div class="arch-diagram">
+            <img src="assets/cloud-resume-architecture.png" alt="Architecture diagram: Route 53 to CloudFront to S3, plus API Gateway to Lambda to DynamoDB, all managed by Terraform">
+          </div>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-screwdriver-wrench"></i> What I Personally Configured</h3>
+          <ul>
+            <li>Private S3 bucket locked down with <strong>CloudFront Origin Access Control (OAC)</strong> &mdash; no public bucket access</li>
+            <li><strong>ACM certificate</strong> with DNS validation and a <strong>Route 53</strong> A-record alias to the CloudFront distribution</li>
+            <li><strong>IAM</strong> roles and least-privilege policies, including GitHub <strong>OIDC</strong> federation so CI/CD uses short-lived tokens instead of stored keys</li>
+            <li>Python <strong>Lambda</strong> using boto3 to run an atomic DynamoDB counter, fronted by an API Gateway HTTP API with CORS</li>
+            <li><strong>Terraform</strong> modules, remote state backend, and DynamoDB state locking</li>
+            <li>Two <strong>GitHub Actions</strong> pipelines: backend runs pytest → terraform apply; frontend syncs to S3 → invalidates the CloudFront cache</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-bug"></i> Problems I Encountered &amp; Solved</h3>
+          <ul>
+            <li>The first backend CI/CD run failed on a test import path and an IAM policy scope issue &mdash; I diagnosed the logs, fixed the module import and tightened the frontend IAM policy, and the pipeline went green.</li>
+            <li>The visitor counter double-counted on page navigation and refresh &mdash; I added client-side caching so a visit only increments once per session.</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-flag-checkered"></i> The Result</h3>
+          <p>A live, fully automated serverless site running on 9 AWS services for roughly $0.50/month plus domain registration. Every push auto-deploys with no manual steps and no long-lived credentials anywhere.</p>
+        </div>
+
+        <div class="project-links">
+          <a href="assets/cloud-resume-architecture.png" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-diagram-project"></i> View Architecture</a>
+          <a href="https://github.com/Movbey/cloud-resume-backend" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> Backend Repo</a>
+          <a href="https://github.com/Movbey/cloud-resume-frontend" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> Frontend Repo</a>
+          <a href="https://dev.to/michael_ovbey/how-i-built-a-serverless-resume-website-on-aws-as-a-complete-beginner-427l" target="_blank" rel="noopener" class="btn btn-primary"><i class="fas fa-pen"></i> Blog Post</a>
+        </div>
+      </div>
+
+      <!-- ==================== AWS COST OPTIMIZER ==================== -->
+      <div class="project-feature" id="cost-optimizer" style="margin-top: 1.5rem;">
+        <div class="project-feature-header">
+          <h2>AWS Cost Optimizer (FinOps Tool)</h2>
+          <div class="project-tech">
+            <span>AWS CDK</span><span>TypeScript</span><span>Python</span><span>Lambda</span><span>Cost Explorer</span><span>EventBridge</span><span>CloudWatch</span><span>DynamoDB</span><span>SNS</span><span>CI/CD</span>
+          </div>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-circle-question"></i> The Problem</h3>
+          <p>Cloud spend is easy to lose track of, and idle resources quietly cost money. I wanted an automated tool that watches AWS spending, catches waste and anomalies early, and delivers plain-language recommendations without me having to log into the console.</p>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-sitemap"></i> The Architecture</h3>
+          <p>An EventBridge schedule triggers a Python Lambda every morning. The function pulls Cost Explorer data, scans EC2/RDS/EBS and CloudWatch metrics for idle resources, detects cost anomalies, stores history in DynamoDB, and sends a report through SNS by email. The entire stack is defined in AWS CDK (TypeScript).</p>
+          <div class="arch-diagram">
+            <img src="assets/cost-optimizer-architecture.png" alt="Architecture diagram: EventBridge schedule triggers Lambda which reads Cost Explorer and CloudWatch, writes to DynamoDB, and publishes to SNS email">
+          </div>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-screwdriver-wrench"></i> What I Personally Configured</h3>
+          <ul>
+            <li><strong>EventBridge</strong> scheduled rule to trigger the Lambda daily at 8 AM ET</li>
+            <li>Python <strong>Lambda</strong> making Cost Explorer API calls and read-only EC2/RDS/CloudWatch calls to find idle resources</li>
+            <li>Waste detection: unattached EBS volumes, unused Elastic IPs, old snapshots, and low-CPU EC2 / zero-connection RDS instances</li>
+            <li>Anomaly detection with configurable day-over-day (&gt;50%) and month-over-month (&gt;20%) thresholds</li>
+            <li><strong>DynamoDB</strong> table with a 90-day TTL for cost history, and an <strong>SNS</strong> topic for email delivery</li>
+            <li>Least-privilege <strong>IAM</strong> scoped to specific resource ARNs via CDK grant helpers, deployed through GitHub Actions with OIDC</li>
+          </ul>
+        </div>
+
+        <div class="project-block">
+          <h3><i class="fas fa-flag-checkered"></i> The Result</h3>
+          <p>A hands-off FinOps report that lands in my inbox every morning with top spend, trends, a month-end forecast, waste findings with dollar estimates, and recommendations &mdash; running for about $0.90/month with zero external Lambda dependencies.</p>
+        </div>
+
+        <div class="project-links">
+          <a href="assets/cost-optimizer-architecture.png" target="_blank" rel="noopener" class="btn btn-outline"><i class="fas fa-diagram-project"></i> View Architecture</a>
+          <a href="https://github.com/Movbey/aws-cost-optimizer" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> Repository</a>
+        </div>
+      </div>
+
+      <p class="cert-more" style="margin-top:1.5rem;"><a href="skills.html">See the full technical skill set <i class="fas fa-arrow-right"></i></a></p>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="visitor-count"><i class="fas fa-eye"></i> <span id="visitor-count">...</span> visitors</p>
+      <p>Built with <i class="fab fa-aws"></i> AWS &middot; S3 &middot; CloudFront &middot; Lambda &middot; DynamoDB &middot; Terraform</p>
+    </div>
+  </footer>
+
+  <script src="js/counter.js"></script>
+  <script src="js/nav.js"></script>
+</body>
+</html>
